@@ -15,19 +15,23 @@ Servo myservo2;
 // twelve servo objects can be created on most boards
 
 // Positions and Sweep and Angles (P.S. This doesn't work)
-int letter = 100; // arbitrary value selected for the height of the letter.
+int letterh = 100; // arbitrary value selected for the height of the letter.
+int letterw = 50; // arbitrary value for the width of the letter. 
 int x = 50; // distance from the scanner to the letter in centimeters
-int y = (letter/2);
-int phi = atan2 (y,x); // angle that the scanner must sweep 
-                                    // to see the top and bottom of the letter.
+int yh = (letterh/2); // centering the letter
+int yw = letterw/2; // centering the letter
+int phi = atan2 (yh,x); // angle that the scanner must sweep 
+                        // to see the top and bottom of the letter.
+int theta = atan2 (yw,x);
 
 int offset = -15; //  The offset of our servo so that it is horizontal
 int zero = 90; // Making the XY plane our zero
-int pti = zero-phi+offset; // lowest point of scan
-int ptf = zero+phi+offset; // highest point of scan
-int pos_t = 0;    // variable to store the servo position
-int pos_b = 0;
-
+int ppi = zero-phi+offset; // lowest point of scan
+int ppf = zero+phi+offset; // highest point of scan
+int pti = zero-theta+offset; // rightmost point of scan
+int ptf = zero+theta+offset; // leftmost point of scan
+int pos_p = 0;    // variable to store the servo position
+int pos_t = 0;
 
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -43,23 +47,23 @@ void loop() {
 // Degrees subject to change based on calibration
 
 // Turns counter clockwise and down
-  for (pos_t = pti; pos_t <= ptf; pos_t += 1) { 
+  for (pos_p = ppi; pos_p <= ppf; pos_p += 1) { 
     // in steps of 1 degree
-    myservo1.write(pos_t);              
-    myservo2.write(pos_b); // Will not move for the 2D scan
+    myservo1.write(pos_p);              
+    myservo2.write(pos_t); // Will not move for the 2D scan
     Serial.print(0);     
-    Serial.print(pos_t);
-    Serial.println(pos_b); 
+    Serial.print(pos_p);
+    Serial.println(pos_t); 
     delay(15);              
   }
   
 // Turns clockwise and up
-  for (pos_t = ptf; pos_t >= pti; pos_t -= 1) { 
-    myservo1.write(pos_t);              
-    myservo2.write(pos_b);
+  for (pos_p = ppf; pos_p >= ppi; pos_p -= 1) { 
+    myservo1.write(pos_p);              
+    myservo2.write(pos_t);
     Serial.print(0);     
-    Serial.print(pos_t);
-    Serial.println(pos_b); 
+    Serial.print(pos_p);
+    Serial.println(pos_t); 
     delay(15);                    
   }
 }
