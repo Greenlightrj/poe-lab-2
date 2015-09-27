@@ -62,7 +62,7 @@ void loop() {
     dsense = analogRead(A0); //read from distance sensor
 
     //print values
-    Serial.println(dsense);
+    Serial.print(dsense);
     Serial.print(pos_p);
     Serial.println(pos_t);
     delay(15);
