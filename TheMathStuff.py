@@ -1,10 +1,20 @@
-import serial
+# import serial
 import datetime
 from math import sin, cos, log, pi
 # read serial from Rebecca's computer
-ser = serial.Serial('COM6', 9600)
+# ser = serial.Serial('COM6', 9600)
+
 # read serial from Jayce's computer
-# ???
+# ser = serial.Serial('/dev/cu.usbmodem1411', 9600)
+import os, fcntl, termios, sys
+
+serialPath = '/dev/cu.usbmodem1411'
+
+ser= os.open(serialPath, 0)
+[iflag, oflag, cflag, lflag, ispeed, ospeed, cc] = range(7)
+settings = termios.tcgetattr(ser)
+settings[ospeed] = termios.B9600
+settings[ispeed] = termios.B0
 
 # initialize x, y, and z as lists
 x = []
