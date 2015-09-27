@@ -5,6 +5,8 @@ Servo myservo1;  // create servo object to control a servo
 Servo myservo2;
 // twelve servo objects can be created on most boards
 
+int dsense;
+
 // Positions and Sweep and Angles (P.S. This doesn't work)
 int letterh = 100; // arbitrary value selected for the height of the letter.
 int letterw = 50; // arbitrary value for the width of the letter.
@@ -53,7 +55,6 @@ void loop() {
 
     //print values
     Serial.println(dsense);
-    Serial.print(0);
     Serial.print(pos_p);
     Serial.println(pos_t);
     delay(15);
@@ -69,7 +70,6 @@ void loop() {
 
     //print values
     Serial.println(dsense);
-    Serial.print(0);
     Serial.print(pos_p);
     Serial.println(pos_t);
     delay(15);
