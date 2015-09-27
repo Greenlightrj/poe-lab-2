@@ -20,22 +20,22 @@ x = [1, 2, 3, 4, 5, 6]
 y = [1, 4, 9, 16, 25, 36]
 z = [2, 4, 6, 8, 10, 12]
 """
-print ("scanning...")
+print("scanning...")
 
-for i in range(0, 300):
+for i in range(0, 4200):
     # serial input in form 'b'R, phi, theta\r\n'
     inp = ser.readline()[:-2]
     #print(inp)
     D = inp.decode("utf-8")
     #print(D)
     Di = D.split(',')
-    print(Di)
+    #print(Di)
     Dr = int(Di[-3])
     #print('Dr: ' + str(Dr))
     # unpack inp into angles and distance
-    phi = (int(Di[-2]) - 75)* pi/180 - 75
-    theta = (int(Di[-1]) -75)* pi/180 -75
-
+    phi = (90 - int(Di[-2])-18) * pi/180
+    theta = (int(Di[-1])- 95) * pi/180
+    print(90 - int(Di[-2]) - 18)
     if Dr > 100:
         Ds = -28.0*log((Dr - 100)/810.0)
     else:
@@ -43,16 +43,16 @@ for i in range(0, 300):
         Ds = 0
     #print('Ds: ' + str(Ds))
     # measurements are in centimeters
-    eyepos = (8.5 * cos(theta), -8.5 * sin(theta) - 5.8, 8.5)
+    eyepos = (8.5 * cos(theta), -8.5 * sin(theta), 8.5)
     #print(eyepos)
     # diagonal in the horizontal plane
     Da = Ds * cos(phi)
-    #    print(Da)
+    #print(Da)
     # positions relative to eye
     Dx = Da * sin(theta)
     Dy = Da * cos(theta)
     Dz = Ds * sin(phi)
-    #print('Dy: ' + str(Dy))
+    #print(Dy, Dz)
     # positions relative to origin
     x.append(eyepos[0] + Dx)
     y.append(eyepos[1] + Dy)
