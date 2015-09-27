@@ -11,6 +11,7 @@ int dsense;
 int phi = 13;
 int theta = 7;//atan2 (yw,x);
 
+int theta_offset = 95; // For squaring the bottom Servo position with the base
 int offset = -15; //  The offset of our servo so that it is horizontal
 int zero = 90; // Making the XY plane our zero
 int ppi = zero - phi + offset; // lowest point of scan
@@ -43,14 +44,16 @@ void loop() {
     // 3D scan potentially
     //  for (pos_p = ppi; pos_t = pti; pos_p <= ppf; pos_t< = ptf; pos_p += 1; pos_t += 1) {
     myservo1.write(pos_p);
-    myservo2.write(pos_t); // Will not move for the 2D scan
+    myservo2.write(theta_offset); // Will not move for the 2D scan
     dsense = analogRead(A0); //read from distance sensor
 
     //print values
-    Serial.println(dsense);
-    Serial.print(pos_p);
-    Serial.println(pos_t);
-    delay(15);
+      Serial.print(dsense);
+      Serial.print(',');
+      Serial.print(pos_p);
+      Serial.print(',');
+      Serial.println(pos_t);
+      delay(15);
   }
 
   // Turns clockwise and up
@@ -58,14 +61,16 @@ void loop() {
     // 3D scan potentially
     //  for (pos_p = ppf; pos_t = ptf; pos_p >= ppi; pos_t >= pti; pos_p -= 1; pos_t -= 1) {
     myservo1.write(pos_p);
-    myservo2.write(pos_t);
+    myservo2.write(theta_offset);
     dsense = analogRead(A0); //read from distance sensor
 
     //print values
-    Serial.print(dsense);
-    Serial.print(pos_p);
-    Serial.println(pos_t);
-    delay(15);
+      Serial.print(dsense);
+      Serial.print(',');
+      Serial.print(pos_p);
+      Serial.print(',');
+      Serial.println(pos_t);
+      delay(15);
   }
 }
 
