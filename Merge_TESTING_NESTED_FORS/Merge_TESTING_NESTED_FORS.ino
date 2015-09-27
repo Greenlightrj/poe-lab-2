@@ -8,9 +8,10 @@ Servo myservo2;
 int dsense;
 
 //// Positions and Sweep and Angles (P.S. This doesn't work)
-//int letterh = 100; // arbitrary value selected for the height of the letter.
-//int letterw = 50; // arbitrary value for the width of the letter.
-//int x = 50; // distance from the scanner to the letter in centimeters
+//int letterh = 20; // height of the letter, in this case height of the scanner so that
+                    // all of the letter is detected
+//int letterw = 11; // width of the letter
+//int x = 45; // distance from the scanner to the letter in centimeters
 //int yh = (letterh / 2); // centering the letter
 //int yw = letterw / 2; // centering the letter
 //int phi = atan2 (yh,x); // angle that the scanner must sweep
