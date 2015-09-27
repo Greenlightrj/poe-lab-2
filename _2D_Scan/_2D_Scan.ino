@@ -9,15 +9,14 @@ int dsense;
 
 // Positions and Sweep and Angles
 int phi = 13;
-int theta = 7;//atan2 (yw,x);
 
 int theta_offset = 95; // For squaring the bottom Servo position with the base
 int offset = -15; //  The offset of our servo so that it is horizontal
 int zero = 90; // Making the XY plane our zero
-int ppi = zero - phi + offset; // lowest point of scan
-int ppf = zero + phi + offset; // highest point of scan
-int pti = zero - theta; // rightmost point of scan
-int ptf = zero + theta; // leftmost point of scan
+//int ppi = zero - phi + offset; // lowest point of scan
+//int ppf = zero + phi + offset; // highest point of scan
+int ppi = 30;
+int ppf = 100;
 int pos_p = 0;    // variable to store the servo position
 int pos_t = 0;
 
