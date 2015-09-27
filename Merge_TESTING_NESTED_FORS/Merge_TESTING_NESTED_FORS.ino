@@ -67,19 +67,22 @@ void loop() {
     }
   }
 
-  // Turns clockwise and up
+//  // Turns clockwise and up
 //  for (pos_p = ppf; pos_p >= ppi; pos_p -= 1) {
 //    // 3D scan potentially
-//    //  for (pos_p = ppf; pos_t = ptf; pos_p >= ppi; pos_t >= pti; pos_p -= 1; pos_t -= 1) {
-//    myservo1.write(pos_p);
-//    myservo2.write(pos_t);
-//    dsense = analogRead(A0); //read from distance sensor
+//    for (pos_t = ptf; pos_t >= pti; pos_t -= 1) {
+//      myservo1.write(pos_p);
+//      myservo2.write(pos_t); // Will not move for the 2D scan
+//      dsense = analogRead(A0); //read from distance sensor
 //
-//    //print values
-//    Serial.println(dsense);
-//    Serial.print(pos_p);
-//    Serial.println(pos_t);
-//    delay(15);
-//  }
+//      //print values
+//      Serial.print(dsense);
+//      Serial.print(',');
+//      Serial.print(pos_p);
+//      Serial.print(',');
+//      Serial.println(pos_t);
+//      delay(15);
+//    }
+  }
 }
 
