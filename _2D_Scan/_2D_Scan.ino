@@ -18,8 +18,8 @@ int ppi = zero - phi + offset; // lowest point of scan
 int ppf = zero + phi + offset; // highest point of scan
 int pti = zero - theta; // rightmost point of scan
 int ptf = zero + theta; // leftmost point of scan
-int pos_p = 0;    // variable to store the servo position
-int pos_t = 0;
+int pos_p = ppi;    // variable to store the servo position
+int pos_t = pti;
 
 
 /////////////////////////////////////////////////////////////////////////////////
