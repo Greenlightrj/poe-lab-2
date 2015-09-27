@@ -24,10 +24,10 @@ int theta = 7; // roughly atan(5.5/45)
 
 int offset = -15; //  The offset of our servo so that it is horizontal
 int zero = 90; // Making the XY plane our zero
-int ppi = zero - phi + offset; // lowest point of scan
-int ppf = zero + phi + offset; // highest point of scan
-int pti = zero - theta; // rightmost point of scan
-int ptf = zero + theta; // leftmost point of scan
+int ppi = 30; // lowest point of scan
+int ppf = 100; // highest point of scan
+int pti = 65; // rightmost point of scan
+int ptf = 125; // leftmost point of scan
 int pos_p = 0;    // variable to store the servo position
 int pos_t = 0;
 
@@ -50,9 +50,10 @@ void loop() {
   // Degrees subject to change based on calibration
 
   // Turns counter clockwise and down
-  for (pos_p = ppi; pos_p <= ppf; pos_p += 1) {
+  for (pos_t = pti; pos_t <= ptf; pos_t += 5) {
+  
     // 3D scan potentially
-    for (pos_t = pti; pos_t <= ptf; pos_t += 1) {
+    for (pos_p = ppi; pos_p <= ppf; pos_p += 1) {
       myservo1.write(pos_p);
       myservo2.write(pos_t); // Will not move for the 2D scan
       dsense = analogRead(A0); //read from distance sensor
@@ -83,6 +84,6 @@ void loop() {
 //      Serial.println(pos_t);
 //      delay(15);
 //    }
-  }
+//  }
 }
 
