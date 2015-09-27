@@ -7,16 +7,9 @@ Servo myservo2;
 
 int dsense;
 
-// Positions and Sweep and Angles (P.S. This doesn't work)
-int letterh = 100; // arbitrary value selected for the height of the letter.
-int letterw = 50; // arbitrary value for the width of the letter.
-int x = 50; // distance from the scanner to the letter in centimeters
-int yh = (letterh / 2); // centering the letter
-int yw = letterw / 2; // centering the letter
-//int phi = atan2 (yh,x); // angle that the scanner must sweep
-// to see the top and bottom of the letter.
-int phi = 45;
-int theta = 45;//atan2 (yw,x);
+// Positions and Sweep and Angles
+int phi = 13;
+int theta = 7;//atan2 (yw,x);
 
 int offset = -15; //  The offset of our servo so that it is horizontal
 int zero = 90; // Making the XY plane our zero
@@ -75,4 +68,5 @@ void loop() {
     delay(15);
   }
 }
+
 

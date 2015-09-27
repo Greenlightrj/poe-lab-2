@@ -17,7 +17,7 @@ int dsense;
 //int phi = atan2 (yh,x); // angle that the scanner must sweep
 //into theta = atan2 (yw,x);
 //// to see the top and bottom of the letter.
-int phi = 10; // roughly atan(7/45)
+int phi = 13; // roughly atan(10/45)
 int theta = 7; // roughly atan(5.5/45)
 
 //int angle = 45;
