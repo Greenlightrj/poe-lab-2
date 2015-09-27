@@ -1,8 +1,6 @@
 import serial
 import datetime
-#import matplotlib.pyplot as plt
-#from mpl_toolkits.mplot3d import Axes3D
-from math import sin, cos
+from math import sin, cos, log
 # read serial from Rebecca's computer
 ser = serial.Serial('COM6', 9600)
 # read serial from Jayce's computer
@@ -23,15 +21,21 @@ y = [1, 4, 9, 16, 25, 36]
 z = [2, 4, 6, 8, 10, 12]
 """
 
-for i in range(0, 6):
+for i in range(0, 10000):
     # serial input in form 'b'R, phi, theta\r\n'
-    inp = ser.readline()
-    Ds = int(inp)
-    print(Ds)
+    inp = ser.readline()[:-2]
+    #print(inp)
+    Dr = int(inp)
+    #print('Dr: ' + str(Dr))
     # unpack inp into angles and distance
     theta = 0
     phi = 0
-    #Ds = 0
+    if Dr > 100:
+        Ds = -28.0*log((Dr - 100)/810.0)
+    else:
+        # prevent errors by not trying to take the log of negative numbers
+        Ds = 0
+    print('Ds: ' + str(Ds))
     # measurements are in centimeters
     eyepos = (8.5 * sin(theta), 8.5 * cos(theta) - 5.8, 8.5)
 
@@ -55,6 +59,8 @@ with open('positions.txt', 'w') as f:
 
 # for later plotting maybe
 """
+#import matplotlib.pyplot as plt
+#from mpl_toolkits.mplot3d import Axes3D
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 Axes3D.scatter(x, y, z)

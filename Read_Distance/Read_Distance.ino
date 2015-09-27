@@ -14,5 +14,5 @@ void loop() {
 //read from distance sensor
 dsense = analogRead(A0);
 //print value
-Serial.println(dsense);
+Serial.println(dsense, DEC);
 }
