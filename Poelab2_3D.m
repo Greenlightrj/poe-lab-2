@@ -6,5 +6,6 @@ load positions.txt
 hold on
 plot3(positions(:,1),positions(:,2),positions(:,3),'.')
 
-xlabel('y (out) distance in cm')
-ylabel('z (up) distance in cm')
+xlabel('x (sideways) distance in cm')
+ylabel('y (forward) distance in cm')
+zlabel('z (up) distance in cm')

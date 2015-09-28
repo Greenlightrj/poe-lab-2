@@ -46,7 +46,7 @@ void setup() {
 
 ////////////////////////////////////////////////////////////////////////////////
 void loop() {
-  // Sweep loop should move through 90 of visibility, 45º up and 45º down.
+  // Sweep loop should move through 90 of visibility, 45Âº up and 45Âº down.
   // Degrees subject to change based on calibration
 
   // Turns counter clockwise and down
@@ -86,4 +86,5 @@ void loop() {
 //    }
 //  }
 }
+
 
