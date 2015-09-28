@@ -1,33 +1,21 @@
 #include <Servo.h>
 #include <Math.h>
 
-Servo myservo1;  // create servo object to control a servo
+Servo myservo1;  
 Servo myservo2;
-// twelve servo objects can be created on most boards
 
 int dsense;
 
 // Positions and Sweep and Angles
-int phi = 13;
 
 int theta_offset = 95; // For squaring the bottom Servo position with the base
 int offset = -15; //  The offset of our servo so that it is horizontal
 int zero = 90; // Making the XY plane our zero
-<<<<<<< HEAD
-//int ppi = zero - phi + offset; // lowest point of scan
-//int ppf = zero + phi + offset; // highest point of scan
+
 int ppi = 30;
 int ppf = 100;
-int pos_p = 0;    // variable to store the servo position
+int pos_p = 0;    
 int pos_t = 0;
-=======
-int ppi = zero - phi + offset; // lowest point of scan
-int ppf = zero + phi + offset; // highest point of scan
-int pti = zero - theta; // rightmost point of scan
-int ptf = zero + theta; // leftmost point of scan
-int pos_p = ppi;    // variable to store the servo position
-int pos_t = pti;
->>>>>>> origin/master
 
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -44,16 +32,11 @@ void setup() {
 
 ////////////////////////////////////////////////////////////////////////////////
 void loop() {
-  // Sweep loop should move through 90 of visibility, 45º up and 45º down.
-  // Degrees subject to change based on calibration
-
   // Turns counter clockwise and down
   for (pos_p = ppi; pos_p <= ppf; pos_p += 1) {
-    // 3D scan potentially
-    //  for (pos_p = ppi; pos_t = pti; pos_p <= ppf; pos_t< = ptf; pos_p += 1; pos_t += 1) {
     myservo1.write(pos_p);
     myservo2.write(theta_offset); // Will not move for the 2D scan
-    dsense = analogRead(A0); //read from distance sensor
+    dsense = analogRead(A0); 
 
     //print values
       Serial.print(dsense);
@@ -66,11 +49,9 @@ void loop() {
 
   // Turns clockwise and up
   for (pos_p = ppf; pos_p >= ppi; pos_p -= 1) {
-    // 3D scan potentially
-    //  for (pos_p = ppf; pos_t = ptf; pos_p >= ppi; pos_t >= pti; pos_p -= 1; pos_t -= 1) {
     myservo1.write(pos_p);
     myservo2.write(theta_offset);
-    dsense = analogRead(A0); //read from distance sensor
+    dsense = analogRead(A0); 
 
     //print values
       Serial.print(dsense);
